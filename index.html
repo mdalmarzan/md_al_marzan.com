@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md Al Marzan — Daily Dispatch</title>
+<meta name="description" content="Daily dispatch from @md_al_marzan on X: the four biggest news stories and four biggest trending topics, checked before they're posted.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12181B;
+    --panel:#1B2226;
+    --panel-2:#202A2E;
+    --paper:#ECE7DA;
+    --paper-dim:#B9B5A8;
+    --rule:#3A4247;
+    --brass:#C9A227;
+    --signal:#E4572E;
+    --focus:#7FD1C6;
+    --radius:2px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--brass); color:#12181B;}
+
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--focus); outline-offset:3px;}
+
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .display{font-family:'Big Shoulders Display', sans-serif; text-transform:uppercase; letter-spacing:0.01em;}
+
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+
+  /* ---------- ticker ---------- */
+  .ticker-bar{
+    border-bottom:1px solid var(--rule);
+    background:var(--panel);
+    overflow:hidden;
+    white-space:nowrap;
+    position:relative;
+  }
+  .ticker-track{
+    display:inline-flex;
+    align-items:center;
+    padding:10px 0;
+    animation:scroll-left 32s linear infinite;
+  }
+  .ticker-track span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    color:var(--paper-dim);
+    padding:0 18px;
+    border-right:1px solid var(--rule);
+  }
+  .ticker-track span b{color:var(--brass); font-weight:600;}
+  @keyframes scroll-left{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track{animation:none;}
+  }
+
+  /* ---------- masthead ---------- */
+  header.masthead{
+    padding:64px 0 40px;
+    border-bottom:1px solid var(--rule);
+    background:
+      radial-gradient(ellipse at top left, rgba(201,162,39,0.07), transparent 55%),
+      radial-gradient(ellipse at bottom right, rgba(228,87,46,0.06), transparent 55%);
+  }
+  .masthead-top{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; letter-spacing:0.18em; color:var(--brass);
+    display:flex; align-items:center; gap:10px; margin-bottom:18px;
+  }
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--signal); display:inline-block; box-shadow:0 0 0 3px rgba(228,87,46,0.18);}
+
+  h1.title{
+    font-size:clamp(46px, 9vw, 96px);
+    line-height:0.92;
+    margin:0 0 18px;
+    font-weight:800;
+  }
+  h1.title .sub{display:block; font-size:0.34em; color:var(--paper-dim); font-weight:600; letter-spacing:0.03em; margin-top:6px;}
+
+  p.lede{
+    max-width:520px;
+    font-size:18px;
+    line-height:1.55;
+    color:var(--paper-dim);
+    margin:0 0 28px;
+  }
+  p.lede strong{color:var(--paper); font-weight:600;}
+
+  .masthead-actions{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+  .btn-follow{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--paper); color:var(--ink);
+    font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:14px;
+    letter-spacing:0.06em; text-decoration:none;
+    padding:13px 22px; border-radius:2px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn-follow:hover{background:var(--brass); transform:translateY(-1px);}
+  .btn-follow .x-mark{
+    font-family:'Big Shoulders Display', sans-serif; font-weight:800; font-size:16px;
+    border:1.5px solid currentColor; width:20px; height:20px; border-radius:3px;
+    display:inline-flex; align-items:center; justify-content:center;
+  }
+  .handle-tag{font-family:'IBM Plex Mono', monospace; font-size:14px; color:var(--paper-dim); letter-spacing:0.03em;}
+
+  /* seal */
+  .seal{
+    width:120px; height:120px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .seal svg{width:100%; height:100%;}
+  .seal-text{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:8.6px; letter-spacing:0.28em; fill:var(--brass);
+  }
+  .seal-ring{
+    fill:none; stroke:var(--brass); stroke-width:1;
+  }
+  .seal-check{stroke:var(--paper); stroke-width:5; fill:none; stroke-linecap:round; stroke-linejoin:round;}
+  .seal-spin{animation:spin 24s linear infinite;}
+  @media (prefers-reduced-motion: reduce){ .seal-spin{animation:none;} }
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* ---------- section shell ---------- */
+  section{padding:64px 0; border-bottom:1px solid var(--rule);}
+  .section-head{display:flex; justify-content:space-between; align-items:baseline; gap:20px; margin-bottom:36px; flex-wrap:wrap;}
+  .section-head h2{
+    font-size:clamp(28px,4vw,40px); margin:0; font-weight:800;
+  }
+  .section-head .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.14em; color:var(--paper-dim);
+  }
+
+  /* ---------- how it works ---------- */
+  .tracks{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule);}
+  .track{background:var(--ink); padding:32px;}
+  .track .kicker{
+    display:flex; align-items:center; gap:10px; margin-bottom:14px;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.14em;
+  }
+  .track.news .kicker{color:var(--brass);}
+  .track.trend .kicker{color:var(--signal);}
+  .track h3{font-size:24px; margin:0 0 12px; font-weight:700;}
+  .track p{color:var(--paper-dim); line-height:1.6; margin:0; font-size:15px;}
+  .swatch{width:8px; height:8px; border-radius:50%; display:inline-block;}
+  .track.news .swatch{background:var(--brass);}
+  .track.trend .swatch{background:var(--signal);}
+
+  @media (max-width:720px){ .tracks{grid-template-columns:1fr;} }
+
+  /* ---------- transmission grid ---------- */
+  .transmission{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule);}
+  .col-head{
+    background:var(--panel); padding:16px 20px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.14em;
+  }
+  .col-head.news{color:var(--brass);}
+  .col-head.trend{color:var(--signal);}
+  .col-body{background:var(--ink); display:flex; flex-direction:column;}
+  .card{
+    padding:24px 20px; border-top:1px solid var(--rule);
+    display:grid; grid-template-columns:44px 1fr; gap:16px;
+  }
+  .col-body .card:first-child{border-top:none;}
+  .rank{
+    font-family:'Big Shoulders Display', sans-serif; font-weight:800; font-size:34px;
+    color:var(--rule); line-height:1;
+  }
+  .card h4{margin:0 0 6px; font-size:17px; font-weight:600; line-height:1.35;}
+  .card .placeholder-text{color:var(--paper-dim); font-size:14px; line-height:1.55; margin:0 0 10px;}
+  .card .meta{
+    display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.06em; color:var(--paper-dim);
+  }
+  .edit-flag{
+    border:1px dashed var(--rule); color:var(--paper-dim);
+    font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.12em;
+    padding:2px 6px; border-radius:2px;
+  }
+  @media (max-width:720px){ .transmission{grid-template-columns:1fr;} }
+
+  .updated-line{
+    margin-top:20px; text-align:right;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--paper-dim); letter-spacing:0.06em;
+  }
+
+  /* ---------- verification ---------- */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  .step{border-top:2px solid var(--brass); padding-top:16px;}
+  .step .num{font-family:'IBM Plex Mono', monospace; color:var(--paper-dim); font-size:12px; letter-spacing:0.1em; margin-bottom:10px; display:block;}
+  .step h4{margin:0 0 8px; font-size:17px; font-weight:700;}
+  .step p{margin:0; color:var(--paper-dim); font-size:14px; line-height:1.55;}
+  @media (max-width:900px){ .steps{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .steps{grid-template-columns:1fr;} }
+
+  /* ---------- footer ---------- */
+  footer{padding:56px 0 40px; border-bottom:none;}
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap;
+  }
+  .footer-inner h3{font-size:clamp(26px,5vw,44px); margin:0 0 8px; font-weight:800;}
+  .footer-inner p{color:var(--paper-dim); margin:0; max-width:420px; line-height:1.5;}
+  .foot-meta{
+    display:flex; gap:28px; margin-top:36px; flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.08em; color:var(--paper-dim);
+  }
+  .foot-meta a{text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:2px;}
+  .foot-meta a:hover{color:var(--brass); border-color:var(--brass);}
+
+  /* ---------- editor note ---------- */
+  .editor-note{
+    background:var(--panel-2); border:1px dashed var(--rule); border-radius:2px;
+    padding:18px 20px; margin-top:28px;
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; line-height:1.7; color:var(--paper-dim);
+  }
+  .editor-note b{color:var(--brass);}
+</style>
+</head>
+<body>
+
+<div class="ticker-bar">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<header class="masthead">
+  <div class="wrap masthead-top">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> LIVE ON X · DAILY DISPATCH</div>
+      <h1 class="title">MD AL<br>MARZAN<span class="sub">Daily Dispatch, checked before it's posted</span></h1>
+      <p class="lede">Every day I post <strong>4 biggest news stories</strong> from around the world and the <strong>4 biggest topics trending on X</strong> — cross-checked against primary sources before they go out.</p>
+      <div class="masthead-actions">
+        <a class="btn-follow" href="https://x.com/md_al_marzan" target="_blank" rel="noopener">
+          <span class="x-mark">X</span> Follow @md_al_marzan
+        </a>
+        <span class="handle-tag">x.com/md_al_marzan</span>
+      </div>
+    </div>
+    <div class="seal" aria-hidden="true">
+      <svg viewBox="0 0 200 200">
+        <g class="seal-spin" style="transform-origin:100px 100px;">
+          <circle class="seal-ring" cx="100" cy="100" r="92"/>
+          <circle class="seal-ring" cx="100" cy="100" r="80"/>
+          <path id="sealArc" d="M 100,20 A 80,80 0 1 1 99.9,20" fill="none"/>
+          <text class="seal-text">
+            <textPath href="#sealArc" startOffset="2%">CHECKED &#8226; SOURCED &#8226; TIMESTAMPED &#8226; </textPath>
+          </text>
+        </g>
+        <polyline class="seal-check" points="70,102 92,124 132,78"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>How the feed works</h2>
+      <span class="tag">TWO TRACKS, EVERY DAY</span>
+    </div>
+    <div class="tracks">
+      <div class="track news">
+        <div class="kicker"><span class="swatch"></span> TRACK 01</div>
+        <h3>4 Biggest News</h3>
+        <p>The four stories with the widest real-world impact that day — world affairs, business, science, and anything else that actually moves the needle. Picked for weight, not just noise.</p>
+      </div>
+      <div class="track trend">
+        <div class="kicker"><span class="swatch"></span> TRACK 02</div>
+        <h3>4 Biggest Trending on X</h3>
+        <p>The four topics actually driving the conversation on X that day. Separate from Track 01 on purpose — a story can be huge without trending, and a trend isn't always the biggest story.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="today">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Today's transmission</h2>
+      <span class="tag" id="dateTag">—</span>
+    </div>
+
+    <div class="transmission">
+      <div>
+        <div class="col-head news"><span>BIGGEST NEWS</span><span>01–04</span></div>
+        <div class="col-body" id="newsCol"></div>
+      </div>
+      <div>
+        <div class="col-head trend"><span>TRENDING ON X</span><span>01–04</span></div>
+        <div class="col-body" id="trendCol"></div>
+      </div>
+    </div>
+
+    <div class="updated-line" id="updatedLine">TEMPLATE — SLOTS NOT YET FILLED</div>
+
+    <div class="editor-note">
+      <b>EDITOR'S NOTE —</b> This page ships with empty slots on purpose: I can't pull your live posts from X automatically, so nothing here is invented. Open <b>index.html</b>, find the <b>NEWS</b> and <b>TRENDING</b> arrays near the bottom of the file, and fill in today's four picks for each — headline, one-line summary, and source link. Re-open the file to see it update. No build tools needed.
+    </div>
+  </div>
+</section>
+
+<section id="standard">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Verification standard</h2>
+      <span class="tag">WHAT "VERIFIED" MEANS HERE</span>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="num">01 / SOURCE</span>
+        <h4>Primary first</h4>
+        <p>Trace each story back to a primary source or original reporting before it's considered.</p>
+      </div>
+      <div class="step">
+        <span class="num">02 / CROSS-CHECK</span>
+        <h4>Second confirmation</h4>
+        <p>Confirm against at least one independent, unrelated source before it's ranked.</p>
+      </div>
+      <div class="step">
+        <span class="num">03 / TIMESTAMP</span>
+        <h4>Time-stamped</h4>
+        <p>Each post carries the time it was checked, so followers know exactly how fresh it is.</p>
+      </div>
+      <div class="step">
+        <span class="num">04 / CORRECT</span>
+        <h4>Open corrections</h4>
+        <p>If a detail turns out wrong, it's corrected on the account publicly — not quietly edited.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <h3>Get today's<br>dispatch on X</h3>
+        <p>4 biggest news. 4 biggest trends. Checked, timestamped, posted daily.</p>
+      </div>
+      <a class="btn-follow" href="https://x.com/md_al_marzan" target="_blank" rel="noopener">
+        <span class="x-mark">X</span> Follow @md_al_marzan
+      </a>
+    </div>
+    <div class="foot-meta">
+      <a href="https://x.com/md_al_marzan" target="_blank" rel="noopener">X / @md_al_marzan</a>
+      <span>Built as a static, editable template</span>
+      <span id="yearTag">© 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* =========================================================
+     EDIT ME — today's four biggest news + four biggest trends.
+     Replace the placeholder strings below with your real picks.
+     Leave "url" as "#" if you don't have a link yet.
+     ========================================================= */
+  const NEWS = [
+    { headline: "Add today's #1 biggest news headline", summary: "One or two lines on what happened and why it matters.", source: "Source name", url: "#" },
+    { headline: "Add today's #2 biggest news headline", summary: "One or two lines on what happened and why it matters.", source: "Source name", url: "#" },
+    { headline: "Add today's #3 biggest news headline", summary: "One or two lines on what happened and why it matters.", source: "Source name", url: "#" },
+    { headline: "Add today's #4 biggest news headline", summary: "One or two lines on what happened and why it matters.", source: "Source name", url: "#" }
+  ];
+
+  const TRENDING = [
+    { headline: "Add today's #1 trending topic on X", summary: "One or two lines on why it's trending.", tag: "#Hashtag", url: "#" },
+    { headline: "Add today's #2 trending topic on X", summary: "One or two lines on why it's trending.", tag: "#Hashtag", url: "#" },
+    { headline: "Add today's #3 trending topic on X", summary: "One or two lines on why it's trending.", tag: "#Hashtag", url: "#" },
+    { headline: "Add today's #4 trending topic on X", summary: "One or two lines on why it's trending.", tag: "#Hashtag", url: "#" }
+  ];
+  /* ========================================================= */
+
+  const CATEGORIES = ["WORLD","MARKETS","TECH","POLITICS","SCIENCE","SPORT","CULTURE","CLIMATE"];
+
+  function renderTicker(){
+    const track = document.getElementById('tickerTrack');
+    const items = CATEGORIES.concat(CATEGORIES); // doubled for seamless loop
+    track.innerHTML = items.map(c => `<span>DISPATCH <b>·</b> ${c}</span>`).join('');
+  }
+
+  function renderCard(item, i, kind){
+    const num = String(i+1).padStart(2,'0');
+    const tail = kind === 'news'
+      ? `<span class="meta"><span>${item.source}</span><span class="edit-flag">EDIT</span></span>`
+      : `<span class="meta"><span>${item.tag}</span><span class="edit-flag">EDIT</span></span>`;
+    return `
+      <div class="card">
+        <div class="rank">${num}</div>
+        <div>
+          <h4>${item.headline}</h4>
+          <p class="placeholder-text">${item.summary}</p>
+          ${tail}
+        </div>
+      </div>`;
+  }
+
+  function render(){
+    document.getElementById('newsCol').innerHTML = NEWS.map((n,i)=>renderCard(n,i,'news')).join('');
+    document.getElementById('trendCol').innerHTML = TRENDING.map((t,i)=>renderCard(t,i,'trend')).join('');
+
+    const today = new Date();
+    const dateStr = today.toLocaleDateString('en-US', { weekday:'short', year:'numeric', month:'short', day:'numeric' });
+    document.getElementById('dateTag').textContent = dateStr.toUpperCase();
+    document.getElementById('updatedLine').textContent = 'PAGE OPENED ' + dateStr.toUpperCase() + ' — FILL SLOTS ABOVE';
+    document.getElementById('yearTag').textContent = '© ' + today.getFullYear();
+  }
+
+  renderTicker();
+  render();
+</script>
+
+</body>
+</html>
